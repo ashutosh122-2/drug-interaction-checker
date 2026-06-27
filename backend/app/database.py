@@ -13,9 +13,9 @@ print("ENV EXISTS =", env_path.exists())
 load_dotenv(dotenv_path=env_path)
 
 # Read variables from .env
-URI = os.getenv("NEO4J_URI")
-USERNAME = os.getenv("NEO4J_USERNAME")
-PASSWORD = os.getenv("NEO4J_PASSWORD")
+URI = os.getenv("NEO4J_URI", "").strip()
+USERNAME = os.getenv("NEO4J_USERNAME", "").strip()
+PASSWORD = os.getenv("NEO4J_PASSWORD", "").strip()
 
 print("URI =", repr(URI))
 print("USERNAME =", repr(USERNAME))
