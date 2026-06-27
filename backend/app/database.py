@@ -17,9 +17,9 @@ URI = os.getenv("NEO4J_URI")
 USERNAME = os.getenv("NEO4J_USERNAME")
 PASSWORD = os.getenv("NEO4J_PASSWORD")
 
-print("URI =", URI)
-print("USERNAME =", USERNAME)
-print("PASSWORD =", PASSWORD)
+print("URI =", repr(URI))
+print("USERNAME =", repr(USERNAME))
+print("PASSWORD LENGTH =", len(PASSWORD) if PASSWORD else 0)
 
 driver = GraphDatabase.driver(
     URI,
