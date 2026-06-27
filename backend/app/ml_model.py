@@ -1,13 +1,19 @@
+from pathlib import Path
 import joblib
 
-model = joblib.load("model.pkl")
+# Project root directory
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-vectorizer = joblib.load("vectorizer.pkl")
+# Load ML model
+model = joblib.load(BASE_DIR / "model.pkl")
+
+# Load TF-IDF vectorizer
+vectorizer = joblib.load(BASE_DIR / "vectorizer.pkl")
 
 
 def predict_interaction(drug1, drug2):
 
-    text = drug1 + " " + drug2
+    text = f"{drug1} {drug2}"
 
     X = vectorizer.transform([text])
 
@@ -19,5 +25,5 @@ def predict_interaction(drug1, drug2):
 
     return {
         "prediction": prediction,
-        "confidence": round(confidence, 2)
+        "confidence": round(confidence, 2),
     }
